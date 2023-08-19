@@ -14,7 +14,10 @@ WEAVIATE_API_KEY = os.getenv('WEAVIATE_API_KEY')
 def ingest_document(document_text, index_name):
     # Create a document object from the given text
     documents = [TextLoader.from_text(document_text)]
-    client = weaviate.Client(url=WEAVIATE_URL, auth_client_secret=weaviate.AuthApiKey(WEAVIATE_API_KEY))
+    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    docs = text_splitter.split_documents(documents)
+    Weaviate.from_documents(docs, embeddings, weaviate_url=WEAVIATE_URL, by_text=False)
+
 
     # Generate embeddings using OpenAIEmbeddings
     embeddings_model = OpenAIEmbeddings()
