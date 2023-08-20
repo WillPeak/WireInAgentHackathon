@@ -60,5 +60,4 @@ def ingest_user_chat(username, messages, timestamp):
             "vector": vector_values,
             "role": message['role']
         }, "Chat")
-
-        print('Ingestion Complete')
+        print("Ingestion Complete")
