@@ -28,7 +28,7 @@ expected_schema = {
                 {"name": "username", "dataType": ["string"]},
                 {"name": "content", "dataType": ["string"]},
                 {"name": "timestamp", "dataType": ["date"]},
-                {"name": "content", "dataType": ["string"]},
+                {"name": "role", "dataType": ["string"]},
                         {
           "name": "vector",
           "dataType": ["number[]"]
@@ -45,19 +45,23 @@ classes = client.schema.get()['classes']
 # Check if the 'Chat' class exists
 if not any(class_obj.get('class') == 'Chat' for class_obj in classes):
     # Create the schema in Weaviate if 'Chat' does not exist
+    print(client.schema.get())
     client.schema.create(expected_schema)
 
-def ingest_user_chat(username, chat_content, timestamp):
+def ingest_user_chat(username, messages, timestamp):
     timestamp_parsed = parse(timestamp)
     timestamp_rfc3339 = timestamp_parsed.replace(tzinfo=tzutc()).isoformat()
-    vector_values = get_embedding(chat_content)
-    print(vector_values)
-    # Create the chat object
-    client.data_object.create({
-        "username": username,
-        "content": chat_content,
-        "timestamp": timestamp_rfc3339,
-        "vector": vector_values
-    }, "Chat")
+    for message in messages:
+        print(username, message, timestamp)
 
-    print('Ingestion Complete')
+        vector_values = get_embedding(message['content'])
+        # Create the chat object
+        client.data_object.create({
+            "username": username,
+            "content": message['content'],
+            "timestamp": timestamp_rfc3339,
+            "vector": vector_values,
+            "role": message['role']
+        }, "Chat")
+
+        print('Ingestion Complete')
