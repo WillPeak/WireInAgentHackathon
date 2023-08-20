@@ -21,7 +21,7 @@ unique_username = os.getenv('USERNAME')
 openai_api_key = os.getenv('OPENAI_API_KEY')
 active_threads = []
 MODEL = os.getenv('MODEL')
-st_autorefresh(interval=10000, key="chatupdate")
+st_autorefresh(interval=60000, key="chatupdate")
 
 def check_time_passed():
     if 'last_time_user_input' in st.session_state:
