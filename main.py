@@ -16,7 +16,7 @@ load_dotenv()
 
 
 
-wait_time = os.genv('INTERVAL_TIME_MINUTES') * 60 #seconds
+wait_time = os.getenv('INTERVAL_TIME_MINUTES') * 60 #seconds
 
 
 
