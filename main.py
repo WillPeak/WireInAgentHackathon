@@ -17,6 +17,8 @@ load_dotenv()
 
 
 wait_time = os.getenv('INTERVAL_TIME_MINUTES') * 60 #seconds
+unique_username = os.getenv('USERNAME')
+openai_api_key = os.getenv('OPENAI_API_KEY')
 
 
 
@@ -56,10 +58,8 @@ def delay_notify():
 
 
 with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     telegram_token = st.text_input("Telegram Bot Token", key="telegram_bot_token", type="password")
     telegram_chat_id = st.text_input("Telegram Chat ID:", key="telegram_chat_id")
-    unique_username = st.text_input("Username:", key="username")
 
 if not all([openai_api_key]):
     st.info("Please provide all the required information in the sidebar to continue chatting.")

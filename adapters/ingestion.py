@@ -28,6 +28,7 @@ expected_schema = {
                 {"name": "username", "dataType": ["string"]},
                 {"name": "content", "dataType": ["string"]},
                 {"name": "timestamp", "dataType": ["date"]},
+                {"name": "content", "dataType": ["string"]},
                         {
           "name": "vector",
           "dataType": ["number[]"]
