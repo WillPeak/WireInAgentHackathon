@@ -45,15 +45,12 @@ classes = client.schema.get()['classes']
 # Check if the 'Chat' class exists
 if not any(class_obj.get('class') == 'Chat' for class_obj in classes):
     # Create the schema in Weaviate if 'Chat' does not exist
-    print(client.schema.get())
     client.schema.create(expected_schema)
 
 def ingest_user_chat(username, messages, timestamp):
     timestamp_parsed = parse(timestamp)
     timestamp_rfc3339 = timestamp_parsed.replace(tzinfo=tzutc()).isoformat()
     for message in messages:
-        print(username, message, timestamp)
-
         vector_values = get_embedding(message['content'])
         # Create the chat object
         client.data_object.create({
