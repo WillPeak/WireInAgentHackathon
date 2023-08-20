@@ -25,7 +25,7 @@ MODEL = os.getenv('MODEL')
 
 def accumulate_and_ingest_messages(messages, last_ingested_index, username):
     print(last_ingested_index)
-    messages = [msg for index, msg in enumerate(messages) if index > last_ingested_index]
+    messages = [msg for index, msg in enumerate(messages) if index > last_ingested_index and index != 1]
     if messages:
         ingest_user_chat(username, messages, datetime.now().isoformat())  # Assuming username and timestamp are parameters
     return messages
