@@ -7,12 +7,16 @@ from datetime import datetime
 from adapters.ingestion import ingest_user_chat
 from datetime import datetime
 import time
+import os
 import threading
 from streamlit.runtime.scriptrunner.script_run_context import add_script_run_ctx
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 
-wait_time = 15 #seconds
+wait_time = os.genv('INTERVAL_TIME_MINUTES') * 60 #seconds
 
 
 
@@ -81,8 +85,6 @@ else:
         st.chat_message("assistant").write(msg.content)
 
         accumulate_and_ingest_non_system_messages(st.session_state.messages, st.session_state["last_ingested_index"], unique_username)  # unique_username assumed to be user's username
-
-
         t = threading.Thread(target=delay_notify)
         add_script_run_ctx(t)
         t.start()

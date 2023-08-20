@@ -1,14 +1,9 @@
-from langchain.vectorstores import Weaviate
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.docstore.document import Document
+
 from dotenv import load_dotenv
 import os
 import weaviate
 from dateutil.parser import parse
 from dateutil.tz import tzutc
-import datetime
-from langchain.embeddings import OpenAIEmbeddings
 import openai
 load_dotenv()
 
