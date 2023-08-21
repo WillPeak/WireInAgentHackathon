@@ -82,7 +82,7 @@ else:
     if "messages" not in st.session_state:
         st.session_state["messages"] = [{"role": "system", "content": system_prompt() }]
         st.session_state["messages"].append({"role": "user", "content": start_prompt() })
-        st.session_state["messages"].append({"role": "assistant", "content": "Hi I am intention bot. I am here to ask you questions about your intentions" })
+        st.session_state["messages"].append({"role": "assistant", "content": "Hello, I am Intention Bot, a specially designed digital assistant created to engage with you regarding your intentions, goals, and desires. My primary function is to understand your unique aspirations, whether they be in your professional career, personal relationships, health and fitness endeavors, or long-term life planning." })
 
     
     # Initialize a state to track the last ingested message index
