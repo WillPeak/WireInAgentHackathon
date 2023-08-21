@@ -10,7 +10,7 @@ This project is a specialized chatbot designed to engage with users regarding th
 2. Install the necessary packages using the following command:
 
     ```bash
-    pip install openai streamlit dotenv streamlit-autorefresh
+    pip install -r requirements.txt
     ```
 
 ## Configuration
@@ -21,11 +21,13 @@ This project is a specialized chatbot designed to engage with users regarding th
     ```env
     INTERVAL_TIME_MINUTES=<time interval in minutes>
     USERNAME=<your username>
+    WEAVIATE_URL = <weaviate url>
+    WEAVIATE_API_KEY = <weaviate api key>
     OPENAI_API_KEY=<your OpenAI API key>
     MODEL=<model name>
     ```
 
-3. Optional: If using the Telegram integration, make sure to input your Telegram Bot Token and Chat ID in the sidebar within the application.
+3. Optional: If using the Telegram integration, make sure to input your Telegram Bot Token and Chat ID in the sidebar within the application. (DO NOT USE THIS YET)
 
 ## Usage
 
