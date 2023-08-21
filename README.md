@@ -34,7 +34,7 @@ This project is a specialized chatbot designed to engage with users regarding th
 1. Run the Streamlit application using the following command:
 
     ```bash
-    streamlit run <filename.py>
+    streamlit run main.py
     ```
 
 2. The application will open in your web browser. You can then interact with the chatbot by typing your messages in the chat input box.
